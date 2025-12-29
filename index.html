@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Developer Portfolio</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-bg: #0b0e14;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --accent-color: #00ff88;
+            --text-main: #ffffff;
+            --text-dim: #a0a0a0;
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--primary-bg);
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 10%;
+            background: rgba(11, 14, 20, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--glass-bg);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--accent-color);
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 10%;
+        }
+
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--accent-color);
+            box-shadow: 0 0 30px rgba(0, 255, 136, 0.3);
+            margin-bottom: 2rem;
+            animation: fadeInScale 1.2s ease-out;
+        }
+
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.5); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .hero h1 { 
+            font-size: 3.5rem; 
+            margin-bottom: 0.5rem; 
+            overflow: hidden; 
+        }
+
+        .hero-intro {
+            display: inline-block;
+            opacity: 0;
+            transform: translateX(-30px);
+            animation: slideRightFade 0.8s ease-out forwards;
+        }
+
+        .name-animate {
+            display: inline-block;
+            color: var(--accent-color);
+            opacity: 0;
+            transform: translateY(40px);
+            animation: slideUpFade 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+            animation-delay: 0.4s;
+        }
+
+        @keyframes slideRightFade {
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes slideUpFade {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero p { color: var(--text-dim); font-size: 1.2rem; max-width: 600px; }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        section { padding: 100px 10%; }
+        
+        h2 { 
+            font-size: 2.5rem; 
+            margin-bottom: 3rem; 
+            text-align: center; 
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--glass-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: var(--transition);
+            cursor: pointer;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--accent-color);
+        }
+
+        .card h3 { color: var(--accent-color); margin-bottom: 1rem; }
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .input-group { position: relative; }
+
+        input, textarea {
+            width: 100%;
+            padding: 1rem;
+            background: var(--glass-bg);
+            border: 1px solid transparent;
+            border-radius: 10px;
+            color: white;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        input:focus, textarea:focus {
+            border-color: var(--accent-color);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        button {
+            padding: 1rem 2rem;
+            background: var(--accent-color);
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">DEV.SOLO</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="home" class="hero">
+        <img src="download.jpg" alt="Profile" class="profile-img">
+        <h1>
+            <span class="hero-intro">Hello, I'm</span> 
+            <span class="name-animate">Rohit</span>
+        </h1>
+        <p>A Web & App Developer proficient in C++, Python Data Science (Pandas/Matplotlib), and MySQL Database Management.</p>
+    </section>
+
+    <section id="about" class="reveal">
+        <h2>About Me</h2>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto;">
+            Passionate developer transitioning between high-level web frameworks and low-level system logic. 
+            I specialize in building responsive user interfaces while maintaining a strong grasp of 
+            data structures in C++ and analytical capabilities in Python.
+        </p>
+    </section>
+
+    <section id="skills" class="reveal">
+        <h2>Technical Stack</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Development</h3>
+                <p>Web (HTML, CSS, JS) <br> App (React Native) <br> UI/UX Design</p>
+            </div>
+            <div class="card">
+                <h3>Languages</h3>
+                <p>C/C++ (Systems) <br> Python (Automation) <br> JavaScript (Logic)</p>
+            </div>
+            <div class="card">
+                <h3>Data Science</h3>
+                <p>Pandas <br> Matplotlib <br> MySQL Databases</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="reveal">
+        <h2>Featured Projects</h2>
+        <div class="grid" id="project-list"></div>
+    </section>
+
+    <section id="contact" class="reveal">
+        <h2>Let's Talk</h2>
+        <form id="contact-form">
+            <div class="input-group">
+                <input type="text" placeholder="Your Name" required>
+            </div>
+            <div class="input-group">
+                <input type="email" placeholder="Your Email" required>
+            </div>
+            <div class="input-group">
+                <textarea rows="5" placeholder="Tell me about your project" required></textarea>
+            </div>
+            <button type="submit">Submit Message</button>
+        </form>
+    </section>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+
+        const projects = [
+            { name: "C++ Physics Engine", tech: "C++, SFML", info: "High-performance collision detection." },
+            { name: "Data Visualizer", tech: "Python, Pandas", info: "Finance tracking with Matplotlib charts." },
+            { name: "E-Commerce App", tech: "React, Node, MySQL", info: "Full-stack shopping experience." }
+        ];
+
+        const projectContainer = document.getElementById('project-list');
+
+        projects.forEach(proj => {
+            const card = document.createElement('div');
+            card.className = 'card';
+            card.innerHTML = `
+                <span>${proj.tech}</span>
+                <h3>${proj.name}</h3>
+                <p>${proj.info}</p>
+            `;
+            projectContainer.appendChild(card);
+        });
+
+        document.getElementById('contact-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert("Success! Message sent to the professional developer.");
+        });
+    </script>
+</body>
+</html>
