@@ -3,26 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Professional Developer Portfolio</title>
+    <title>Rohit | Modern Interactive Portfolio</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 
     <style>
         :root {
-            --primary-bg: #0b0e14;
+            --primary-bg: #030508;
+            --secondary-bg: #0a1118;
             --glass-bg: rgba(255, 255, 255, 0.05);
-            --accent-color: #00ff88;
+            --accent-color: #00ffa3; 
+            --secondary-accent: #00d4ff;
             --text-main: #ffffff;
-            --text-dim: #a0a0a0;
-            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            --text-dim: #b0c4de;
+            --transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
 
         body {
             background-color: var(--primary-bg);
@@ -31,296 +30,269 @@
             line-height: 1.6;
         }
 
-        nav {
+        #particles-js {
             position: fixed;
-            top: 0;
             width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.5rem 10%;
-            background: rgba(11, 14, 20, 0.8);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            border-bottom: 1px solid var(--glass-bg);
+            height: 100%;
+            z-index: 0;
+            top: 0;
+            left: 0;
         }
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--accent-color);
-            letter-spacing: 2px;
+        /* --- Navigation --- */
+        nav {
+            position: fixed; top: 0; width: 100%;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 1.2rem 10%; background: rgba(3, 5, 8, 0.8);
+            backdrop-filter: blur(20px); z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
+        .logo { font-size: 1.4rem; font-weight: 800; color: var(--accent-color); text-decoration: none; }
+        .nav-links { display: flex; list-style: none; gap: 2rem; }
+        .nav-links a { color: var(--text-dim); text-decoration: none; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1.5px; transition: var(--transition); }
+        .nav-links a:hover { color: var(--accent-color); }
 
-        .nav-links a {
-            color: var(--text-main);
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: var(--transition);
-        }
-
-        .nav-links a:hover {
-            color: var(--accent-color);
-        }
-
+        /* --- Hero --- */
         .hero {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 0 10%;
+            height: 100vh; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; text-align: center; 
+            padding: 0 10%; position: relative; z-index: 1;
+        }
+
+        .status-badge {
+            display: flex; align-items: center; gap: 10px;
+            background: rgba(0, 255, 163, 0.1); color: var(--accent-color);
+            padding: 6px 16px; border-radius: 100px; font-size: 0.8rem;
+            font-weight: 600; margin-bottom: 1.5rem; border: 1px solid rgba(0, 255, 163, 0.2);
+        }
+
+        .pulse {
+            width: 8px; height: 8px; background: var(--accent-color);
+            border-radius: 50%; animation: pulse-animation 2s infinite;
+        }
+
+        @keyframes pulse-animation {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 255, 163, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(0, 255, 163, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 255, 163, 0); }
         }
 
         .profile-img {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid var(--accent-color);
-            box-shadow: 0 0 30px rgba(0, 255, 136, 0.3);
-            margin-bottom: 2rem;
-            animation: fadeInScale 1.2s ease-out;
+            width: 150px; height: 150px; border-radius: 50%;
+            object-fit: cover; border: 3px solid var(--accent-color);
+            padding: 5px; margin-bottom: 1.5rem;
         }
 
-        @keyframes fadeInScale {
-            from { opacity: 0; transform: scale(0.5); }
-            to { opacity: 1; transform: scale(1); }
-        }
-
-        .hero h1 { 
-            font-size: 3.5rem; 
-            margin-bottom: 0.5rem; 
-            overflow: hidden; 
-        }
-
-        .hero-intro {
-            display: inline-block;
-            opacity: 0;
-            transform: translateX(-30px);
-            animation: slideRightFade 0.8s ease-out forwards;
-        }
-
-        .name-animate {
-            display: inline-block;
-            color: var(--accent-color);
-            opacity: 0;
-            transform: translateY(40px);
-            animation: slideUpFade 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-            animation-delay: 0.4s;
-        }
-
-        @keyframes slideRightFade {
-            to { opacity: 1; transform: translateX(0); }
-        }
-
-        @keyframes slideUpFade {
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .hero p { color: var(--text-dim); font-size: 1.2rem; max-width: 600px; }
-
-        .reveal {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.8s ease-out;
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        section { padding: 100px 10%; }
+        .hero h1 { font-size: 3.5rem; margin-bottom: 1rem; }
+        .name-animate { background: linear-gradient(90deg, var(--accent-color), var(--secondary-accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         
-        h2 { 
-            font-size: 2.5rem; 
-            margin-bottom: 3rem; 
-            text-align: center; 
-        }
+        /* --- Skill Bars --- */
+        .skill-container { margin-top: 20px; text-align: left; }
+        .skill-info { display: flex; justify-content: space-between; font-size: 0.85rem; color: var(--text-dim); }
+        .skill-bar { width: 100%; height: 6px; background: rgba(255,255,255,0.1); border-radius: 10px; margin-top: 5px; overflow: hidden; }
+        .skill-fill { height: 100%; background: var(--accent-color); transform: scaleX(0); transform-origin: left; transition: transform 1.5s ease-out; }
+        .reveal.active .skill-fill { transform: scaleX(1); }
 
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
+        /* --- Heatmap --- */
+        .activity-container { margin-top: 30px; background: var(--glass-bg); padding: 20px; border-radius: 15px; }
+        .heatmap-grid { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 10px; }
+        .heat-square { width: 12px; height: 12px; background: #161b22; border-radius: 2px; }
 
+        /* --- Grid & Cards --- */
+        section { padding: 100px 10%; position: relative; z-index: 1; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
         .card {
-            background: var(--glass-bg);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 2rem;
-            transition: var(--transition);
-            cursor: pointer;
-            overflow: hidden;
-            position: relative;
+            background: var(--glass-bg); border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px; padding: 2.5rem; transition: var(--transition);
+            backdrop-filter: blur(10px);
         }
+        .card:hover { transform: translateY(-10px); border-color: var(--accent-color); }
 
-        .card:hover {
-            transform: translateY(-10px);
-            background: rgba(255, 255, 255, 0.08);
-            border-color: var(--accent-color);
-        }
+        .tech-tag { font-size: 0.65rem; background: rgba(0, 255, 163, 0.1); color: var(--accent-color); padding: 5px 12px; border-radius: 100px; margin-bottom: 1rem; display: inline-block; font-weight: 600; }
 
-        .card h3 { color: var(--accent-color); margin-bottom: 1rem; }
+        /* --- Form --- */
+        .contact-container { background: var(--glass-bg); padding: 3rem; border-radius: 30px; border: 1px solid rgba(255, 255, 255, 0.05); max-width: 700px; margin: 0 auto; }
+        input, textarea { width: 100%; padding: 1rem; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; color: white; margin-bottom: 1rem; }
+        button { width: 100%; padding: 1rem; background: var(--accent-color); border: none; font-weight: 800; border-radius: 12px; cursor: pointer; transition: var(--transition); }
 
-        form {
-            max-width: 600px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 1s ease; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
 
-        .input-group { position: relative; }
-
-        input, textarea {
-            width: 100%;
-            padding: 1rem;
-            background: var(--glass-bg);
-            border: 1px solid transparent;
-            border-radius: 10px;
-            color: white;
-            outline: none;
-            transition: var(--transition);
-        }
-
-        input:focus, textarea:focus {
-            border-color: var(--accent-color);
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        button {
-            padding: 1rem 2rem;
-            background: var(--accent-color);
-            border: none;
-            border-radius: 10px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(0, 255, 136, 0.4);
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.2rem; }
-            .nav-links { display: none; }
-        }
+        @media (max-width: 768px) { .hero h1 { font-size: 2.5rem; } .nav-links { display: none; } }
     </style>
 </head>
 <body>
 
+    <div id="particles-js"></div>
+
     <nav>
-        <div class="logo">DEV.SOLO</div>
+        <a href="#" class="logo">ROHIT.DEV</a>
         <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
+            <li><a href="#projects">Work</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
 
     <section id="home" class="hero">
-        <img src="download.jpg" alt="Profile" class="profile-img">
-        <h1>
-            <span class="hero-intro">Hello, I'm</span> 
-            <span class="name-animate">Rohit</span>
-        </h1>
-        <p>A Web & App Developer proficient in C++, Python Data Science (Pandas/Matplotlib), and MySQL Database Management.</p>
+        <div class="status-badge">
+            <span class="pulse"></span> Open to Work
+        </div>
+        <img src="download.jpg" alt="Rohit" class="profile-img">
+        <div class="reveal">
+            <p id="greeting" style="color: var(--accent-color); font-weight: 600; margin-bottom: 10px;"></p>
+            <h1>I am <span class="name-animate" id="typewriter"></span></h1>
+            <p>Solving complex problems with elegant code. Specialized in Python automation, MySQL architecture, and C++ systems.</p>
+            <a href="#contact" style="display:inline-block; margin-top:20px; padding: 12px 30px; background:var(--accent-color); color:#000; text-decoration:none; border-radius:10px; font-weight:800;">LET'S WORK TOGETHER</a>
+        </div>
     </section>
 
     <section id="about" class="reveal">
-        <h2>About Me</h2>
-        <p style="text-align: center; max-width: 800px; margin: 0 auto;">
-            Passionate developer transitioning between high-level web frameworks and low-level system logic. 
-            I specialize in building responsive user interfaces while maintaining a strong grasp of 
-            data structures in C++ and analytical capabilities in Python.
-        </p>
+        <h2>Who Am I?</h2>
+        <div class="grid">
+            <div style="grid-column: 1 / -1;">
+                <p style="color: var(--text-dim); font-size: 1.1rem; max-width: 800px; font-weight: 300;">
+                    I’m a developer who bridges the gap between raw data and human-centric solutions. 
+                    I thrive in environments where I can automate manual processes and optimize backend logic.
+                </p>
+                <div class="activity-container">
+                    <p style="font-size: 0.8rem; color: var(--text-dim);">Simulated Coding Activity (Last 30 Days)</p>
+                    <div id="heatmap" class="heatmap-grid"></div>
+                </div>
+            </div>
+        </div>
     </section>
 
     <section id="skills" class="reveal">
-        <h2>Technical Stack</h2>
+        <h2>Expertise</h2>
         <div class="grid">
             <div class="card">
-                <h3>Development</h3>
-                <p>Web (HTML, CSS, JS) <br> App (React Native) <br> UI/UX Design</p>
+                <i class="fas fa-terminal" style="color:var(--accent-color); font-size: 1.5rem;"></i>
+                <h3 style="margin-top:15px;">C++ Logic</h3>
+                <div class="skill-container">
+                    <div class="skill-info"><span>Algorithms & DSA</span><span>90%</span></div>
+                    <div class="skill-bar"><div class="skill-fill" style="width: 90%;"></div></div>
+                </div>
             </div>
             <div class="card">
-                <h3>Languages</h3>
-                <p>C/C++ (Systems) <br> Python (Automation) <br> JavaScript (Logic)</p>
+                <i class="fas fa-database" style="color:var(--accent-color); font-size: 1.5rem;"></i>
+                <h3 style="margin-top:15px;">Data Science</h3>
+                <div class="skill-container">
+                    <div class="skill-info"><span>Python / SQL</span><span>85%</span></div>
+                    <div class="skill-bar"><div class="skill-fill" style="width: 85%;"></div></div>
+                </div>
             </div>
             <div class="card">
-                <h3>Data Science</h3>
-                <p>Pandas <br> Matplotlib <br> MySQL Databases</p>
+                <i class="fas fa-code" style="color:var(--accent-color); font-size: 1.5rem;"></i>
+                <h3 style="margin-top:15px;">Web Systems</h3>
+                <div class="skill-container">
+                    <div class="skill-info"><span>Full Stack</span><span>80%</span></div>
+                    <div class="skill-bar"><div class="skill-fill" style="width: 80%;"></div></div>
+                </div>
             </div>
         </div>
     </section>
 
     <section id="projects" class="reveal">
-        <h2>Featured Projects</h2>
+        <h2>Featured Work</h2>
         <div class="grid" id="project-list"></div>
     </section>
 
     <section id="contact" class="reveal">
         <h2>Let's Talk</h2>
-        <form id="contact-form">
-            <div class="input-group">
+        <div class="contact-container">
+            <form id="contact-form">
                 <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Email Address" required>
+                <textarea rows="5" placeholder="Project Details" required></textarea>
+                <button type="submit">SEND MESSAGE</button>
+            </form>
+            <div style="display:flex; justify-content:center; gap:20px; margin-top:30px;">
+                <a href="#" style="color:white; font-size:1.5rem;"><i class="fab fa-discord"></i></a>
+                <a href="#" style="color:white; font-size:1.5rem;"><i class="fab fa-instagram"></i></a>
+                <a href="#" style="color:white; font-size:1.5rem;"><i class="fab fa-facebook"></i></a>
             </div>
-            <div class="input-group">
-                <input type="email" placeholder="Your Email" required>
-            </div>
-            <div class="input-group">
-                <textarea rows="5" placeholder="Tell me about your project" required></textarea>
-            </div>
-            <button type="submit">Submit Message</button>
-        </form>
+        </div>
     </section>
 
     <script>
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
-            });
-        }, { threshold: 0.1 });
+        // 1. Particles.js Configuration
+        particlesJS("particles-js", {
+            "particles": {
+                "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
+                "color": { "value": "#00ffa3" },
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.2, "random": false },
+                "size": { "value": 3, "random": true },
+                "line_linked": { "enable": true, "distance": 150, "color": "#00ffa3", "opacity": 0.1, "width": 1 },
+                "move": { "enable": true, "speed": 2, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": true, "mode": "push" }, "resize": true },
+                "modes": { "grab": { "distance": 140, "line_linked": { "opacity": 1 } }, "push": { "particles_nb": 4 } }
+            },
+            "retina_detect": true
+        });
 
-        document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+        // 2. Greeting Logic
+        const hours = new Date().getHours();
+        let greet = hours < 12 ? "Good Morning ☀️" : hours < 18 ? "Good Afternoon ☕" : "Good Evening 🌙";
+        document.getElementById('greeting').innerText = greet;
 
+        // 3. Typewriter
+        const textElement = document.getElementById("typewriter");
+        const words = ["Rohit.", "a Developer.", "a Data Enthusiast.", "an Automation Expert."];
+        let wordIndex = 0, charIndex = 0, isDeleting = false;
+        function type() {
+            const currentWord = words[wordIndex];
+            textElement.textContent = isDeleting ? currentWord.substring(0, charIndex - 1) : currentWord.substring(0, charIndex + 1);
+            charIndex = isDeleting ? charIndex - 1 : charIndex + 1;
+            if (!isDeleting && charIndex === currentWord.length) { isDeleting = true; setTimeout(type, 1500); }
+            else if (isDeleting && charIndex === 0) { isDeleting = false; wordIndex = (wordIndex + 1) % words.length; setTimeout(type, 500); }
+            else { setTimeout(type, isDeleting ? 80 : 150); }
+        }
+        type();
+
+        // 4. Heatmap Generator
+        const heatmap = document.getElementById('heatmap');
+        for (let i = 0; i < 40; i++) {
+            const square = document.createElement('div');
+            square.className = 'heat-square';
+            const activity = Math.floor(Math.random() * 4);
+            if (activity === 1) square.style.background = '#0e4429';
+            if (activity === 2) square.style.background = '#26a641';
+            if (activity === 3) square.style.background = '#39d353';
+            heatmap.appendChild(square);
+        }
+
+        // 5. Project Loading
         const projects = [
-            { name: "C++ Physics Engine", tech: "C++, SFML", info: "High-performance collision detection." },
-            { name: "Data Visualizer", tech: "Python, Pandas", info: "Finance tracking with Matplotlib charts." },
-            { name: "E-Commerce App", tech: "React, Node, MySQL", info: "Full-stack shopping experience." }
+            { name: "Auto-Hotel Management", tech: "Python / MySQL", info: "A fully automated check-in/out and billing system with live SQL updates." },
+            { name: "Finance Visualizer", tech: "Python / Pandas", info: "Converts complex market CSVs into interactive, human-readable charts." },
+            { name: "C++ Physics Engine", tech: "C++ / SFML", info: "High-performance simulation of gravity and multi-object collision logic." },
+            { name: "Inventory Predictor", tech: "MySQL / Python", info: "ERP tracker that uses SQL history to predict stock reorder points." }
         ];
 
-        const projectContainer = document.getElementById('project-list');
-
-        projects.forEach(proj => {
+        const container = document.getElementById('project-list');
+        projects.forEach(p => {
             const card = document.createElement('div');
             card.className = 'card';
-            card.innerHTML = `
-                <span>${proj.tech}</span>
-                <h3>${proj.name}</h3>
-                <p>${proj.info}</p>
-            `;
-            projectContainer.appendChild(card);
+            card.innerHTML = `<span class="tech-tag">${p.tech}</span><h3>${p.name}</h3><p style="color:var(--text-dim); font-size:0.85rem; margin-top:10px;">${p.info}</p>`;
+            container.appendChild(card);
         });
+
+        // 6. Reveal Observer
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => { if (entry.isIntersecting) entry.target.classList.add('active'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
 
         document.getElementById('contact-form').addEventListener('submit', (e) => {
             e.preventDefault();
-            alert("Success! Message sent to the professional developer.");
+            alert("Thanks for your message! I'll get back to you personally.");
         });
     </script>
 </body>
